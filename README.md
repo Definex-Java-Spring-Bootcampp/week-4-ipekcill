@@ -30,17 +30,32 @@
 ### Features
 All components have been Dockerized.
 #### Micro Services:
+
 - KredinBizde Service:
-    - ........
+  - Supports auditable entity classes.
+  - Utilizes caching to improve performance by storing frequently accessed data in memory.
+  - Utilizes Feign Client for communicating with the Garanti Service to create applications.
+  - Implements asynchronous notification using RabbitMQ to send notifications.
+  - Implements logging with Kafka to collect exceptions and stores them in MongoDB for further analysis and monitoring.
+  - Implements custom exception classes to handle various error scenarios
+  - Includes unit tests to ensure the correctness and reliability of the codebase.
   
-  All unit tests successfully run:
-      ![UnitTests](https://raw.githubusercontent.com/ipekcill/image-resources/main/unitTests.png)
+    All unit tests successfully run:
+
+![UnitTests](https://raw.githubusercontent.com/ipekcill/image-resources/main/unitTests.png)
+
 - Garanti Service:
-    - ........
+  - KredinBizde Service integrates with the Garanti Service for synchronously communicating  applications from KredinBizde Service to the Garanti Bank. 
+  - RabbitMQ is utilized for communication between services.
+  - Implements custom exception classes to handle various error scenarios
+  
 - Notification Service:
-    - ........
+  - Implements the Strategy Pattern to provide a flexible and extensible way of sending notifications. 
+  - The Strategy Pattern allows to support multiple notification strategies (e.g., email, SMS, mobile) and switch between them dynamically at runtime.
+
 - Log Service:
-    - ........
+  - Responsible for generating exception logs and storing them in MongoDB using Kafka for message queuing.
+  
 #### Service Registry:
 - All above services should Register them with this Registry
 #### API Gateway:
