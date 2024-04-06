@@ -1,5 +1,6 @@
 package com.patika.invoiceservice.producer.dto;
 
+import com.patika.invoiceservice.producer.enums.NotificationType;
 import lombok.*;
 
 @Getter
@@ -7,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @ToString
-public class  {
+public class NotificationDTO {
 
     private NotificationType notificationType;
     private String message;

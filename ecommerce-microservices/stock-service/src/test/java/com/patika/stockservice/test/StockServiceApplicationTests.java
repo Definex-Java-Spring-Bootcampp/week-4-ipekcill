@@ -1,4 +1,4 @@
-package com.patika.kredinbizdeservice.test.stockservice;
+package com.patika.stockservice.test;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
