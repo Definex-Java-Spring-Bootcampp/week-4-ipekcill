@@ -9,7 +9,7 @@
 - [CONTACT](#contact)
 
 ### Project Architecture
-![Project Design](https://raw.githubusercontent.com/ipekcill/image-resources/main/Project-structure_drawing.png)
+![Project Design](https://raw.githubusercontent.com/ipekcill/image-resources/main/structure.jpg)
 
 ### Technology Stack
 - Java 21
