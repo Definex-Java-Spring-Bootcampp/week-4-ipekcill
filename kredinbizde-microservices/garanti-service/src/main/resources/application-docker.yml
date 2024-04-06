@@ -1,0 +1,12 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: garanti-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://kredinbizde-discovery:8761/eureka

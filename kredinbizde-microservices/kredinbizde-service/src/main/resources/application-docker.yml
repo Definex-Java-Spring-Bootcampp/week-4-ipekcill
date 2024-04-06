@@ -1,0 +1,61 @@
+server:
+  port: 8083
+spring:
+  data:
+    redis:
+      host: redis
+      port: 6379
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: jdbc:postgresql://postgres:5432/kredinbizde
+    username: sa
+    password: password
+    driver-class-name: org.postgresql.Driver
+  application:
+    name: kredinbizde-service
+  rabbitmq:
+    host: rabbitmq
+    username: guest
+    password: guest
+    port: 5672
+  kafka:
+    bootstrap-servers: kafka:9092
+    producer:
+      topic: log-topic
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    openfeign:
+      client:
+        config:
+          garanti-service:
+            url: http://garanti-service:8081
+          akbank-service:
+            url: http://akbank-service:8085
+
+rabbitmq:
+  exchange: patika.exchange
+  queue: patika.queue
+  routing-key: patika.routingkey
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://kredinbizde-discovery:8761/eureka
+
+cache:
+  config:
+    entryTtl: 60
+    products:
+      entryTtl: 30
+
+kredinbizde:
+  openapi:
+    url: http://kredinbizde-service:8083

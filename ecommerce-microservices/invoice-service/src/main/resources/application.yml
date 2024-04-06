@@ -1,0 +1,24 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: invoice-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka # value will get overriden if passed from external config
+
+
+rabbitmq:
+  exchange: patika.exchange
+  consumer:
+    invoice:
+      queue: invoice.queue
+      routing-key: invoice.routingkey
+  producer:
+    notification:
+      queue: notification.queue
+      routing-key: notification.routingkey

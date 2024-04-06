@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: customer-service
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    port: 5672
+  main:
+    allow-bean-definition-overriding: true
+rabbitmq:
+  exchange: patika.exchange
+  queue: patika.queue
+  routing-key: patika.routingkey
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka # value will get overriden if passed from external config

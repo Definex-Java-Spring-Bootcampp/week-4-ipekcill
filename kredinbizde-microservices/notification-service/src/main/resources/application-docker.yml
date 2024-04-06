@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: notification-service
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+rabbitmq:
+  exchange: patika.exchange
+  queue: patika.queue
+  routing-key: patika.routingkey
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://kredinbizde-discovery:8761/eureka

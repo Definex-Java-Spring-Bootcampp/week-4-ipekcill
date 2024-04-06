@@ -1,0 +1,21 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: kredinbizde-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: garanti-service
+          uri: http://garanti-service:8081
+          predicates:
+            - Path=/api/garanti/**
+        - id: kredinbizde-service
+          uri: http://kredinbizde-service:8083
+          predicates:
+            - Path=/api/kredinbizde/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://kredinbizde-discovery:8761/eureka
+    registerWithEureka: false

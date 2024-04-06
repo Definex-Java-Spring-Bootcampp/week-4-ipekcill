@@ -1,22 +1,57 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/t218cK-M)
-# 4.Hafta Ödevi
-- Kullanılan servisleri istediğiniz bir database ile bağlayın. `(30 PUAN)`
+# Patika Bootcamp
 
-- Bir uygulama için service katmanına tüm gerekli senaryolar için unit test yazın. `(20 PUAN)(Daha fazla yapan bonus 10 PUAN)`
+### Table of contents
 
-- Tüm uygulamaları tek bir repo haline getirin.`(5 PUAN)`
+- [PROJECT STRUCTURE](#Project-architecture)
+- [TECHNOLOGY STACK](#technology-stack)
+- [DOCKER](#docker)
+- [FEATURES](#features)
+- [CONTACT](#contact)
 
-- Dokümantasyon ekleyin. `(20 PUAN)`
+### Project Architecture
+![Project Design](https://raw.githubusercontent.com/ipekcill/image-resources/main/Project-structure_drawing.png)
 
-- Best practices, isimlendirme kurallarına uyum. `(10 PUAN)`
+### Technology Stack
+- Java 21
+- Spring Boot
+- Spring Cloud (Eureka Discovery,Eureka Server, Gateway)
+- Spring Data, Hibernate
+- Maven
+- RabbitMQ
+- Kafka
+- PostgreSql
+- Feign Client
+- MongoDB
+- Redis
+- Docker
+- JUnit
+- Swagger
 
-- Uygulamanın doğru çalışması. `(15 PUAN)`
+### Features
+All components have been Dockerized.
+#### Micro Services:
+- KredinBizde Service:
+    - ........
+  
+  All unit tests successfully run:
+      ![UnitTests](https://raw.githubusercontent.com/ipekcill/image-resources/main/unitTests.png)
+- Garanti Service:
+    - ........
+- Notification Service:
+    - ........
+- Log Service:
+    - ........
+#### Service Registry:
+- All above services should Register them with this Registry
+#### API Gateway:
+- All Services should be accessible with single gateway
 
-## BONUS
-- Uygulamaların dockerize edilmesi ve docker compose dosyası yazılması. `(10 PUAN)`
+### Docker
+All Kredinbizde microservices and related components are collected in docker-compose.yml. Applications were containerized.
+This build can be easily started with the `docker-compose up` command. Once all services start running in Docker, you can access Swagger from [here](http://localhost:8083/swagger-ui/index.html).
 
-- Design Pattern kullanımı. `(10 PUAN)`
 
----
-*Eğitmen - Cem DIRMAN*  
-*Kolay Gelsin*
+### Contact
+[Linkedin](https://www.linkedin.com/in/ipekcil/)
+
+ipekcill94@gmail.com

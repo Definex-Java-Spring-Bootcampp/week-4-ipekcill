@@ -1,0 +1,33 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: api-gw
+  cloud:
+    gateway:
+      routes:
+        - id: customer-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/customer/**
+        - id: product-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/product/**
+        - id: order-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/order/**
+        - id: stock-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/stock/**
+        - id: invoice-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/invoice/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    registerWithEureka: false
