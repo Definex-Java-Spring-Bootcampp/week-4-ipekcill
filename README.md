@@ -65,6 +65,7 @@ All components have been Dockerized.
 All Kredinbizde microservices and related components are collected in docker-compose.yml. Applications were containerized.
 This build can be easily started with the `docker-compose up` command. Once all services start running in Docker, you can access Swagger from [here](http://localhost:8083/swagger-ui/index.html).
 
+![Example end-point](https://raw.githubusercontent.com/ipekcill/image-resources/main/Screenshot_1.png)
 
 ### Contact
 [Linkedin](https://www.linkedin.com/in/ipekcil/)
