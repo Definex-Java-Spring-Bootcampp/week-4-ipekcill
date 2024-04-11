@@ -46,7 +46,6 @@ All components have been Dockerized.
 
 - Garanti Service:
   - KredinBizde Service integrates with the Garanti Service for synchronously communicating  applications from KredinBizde Service to the Garanti Bank. 
-  - RabbitMQ is utilized for communication between services.
   - Implements custom exception classes to handle various error scenarios
   
 - Notification Service:
