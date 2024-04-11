@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class NotificationProducer {
 
-    // private final RabbitTemplate rabbitTemplate;
-
     private final RabbitMQConfig rabbitMQConfig;
     private final AmqpTemplate amqpTemplate;
 

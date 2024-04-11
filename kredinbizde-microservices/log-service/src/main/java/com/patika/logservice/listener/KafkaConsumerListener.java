@@ -2,6 +2,7 @@ package com.patika.logservice.listener;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.patika.logservice.model.ExceptionLog;
 import com.patika.logservice.repository.LogRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ public class KafkaConsumerListener {
     public void listen(String message) {
         log.info("Received Messasge: {}", message);
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
         try {
             ExceptionLog exceptionLog = objectMapper.readValue(message, ExceptionLog.class);
             logRepository.insert(exceptionLog);

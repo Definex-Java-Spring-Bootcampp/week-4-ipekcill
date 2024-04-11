@@ -2,6 +2,7 @@ package com.patika.kredinbizdeservice.exceptions;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.patika.kredinbizdeservice.controller.model.ApiResponse;
 import com.patika.kredinbizdeservice.producer.LogProducer;
 import com.patika.kredinbizdeservice.producer.dto.ExceptionLogDto;
@@ -86,6 +87,7 @@ public class GlobalExceptionHandler {
 
     private String dtoMapper(ExceptionLogDto dto) {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
         try {
             String jsonString = objectMapper.writeValueAsString(dto);
             log.info("Log produced: {}", jsonString);

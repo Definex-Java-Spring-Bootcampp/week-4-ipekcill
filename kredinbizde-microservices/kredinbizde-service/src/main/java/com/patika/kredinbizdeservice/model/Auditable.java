@@ -1,6 +1,5 @@
 package com.patika.kredinbizdeservice.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -16,15 +15,9 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public abstract class Auditable {
-    /*@CreatedBy
-    protected String createdBy;*/
 
     @CreatedDate
-    @Column(nullable = false, updatable = false)
     protected LocalDateTime createdDate;
-
-    /*@LastModifiedBy
-    protected String lastModifiedBy;*/
 
     @LastModifiedDate
     protected LocalDateTime lastModifiedDate;
