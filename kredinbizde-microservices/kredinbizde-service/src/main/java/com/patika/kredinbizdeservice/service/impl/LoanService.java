@@ -4,10 +4,8 @@ import com.patika.kredinbizdeservice.configuration.CacheNames;
 import com.patika.kredinbizdeservice.controller.model.ProductDto;
 import com.patika.kredinbizdeservice.enums.LoanType;
 import com.patika.kredinbizdeservice.exceptions.BusinessException;
-import com.patika.kredinbizdeservice.model.ConsumerLoan;
-import com.patika.kredinbizdeservice.model.HouseLoan;
-import com.patika.kredinbizdeservice.model.Loan;
-import com.patika.kredinbizdeservice.model.VehicleLoan;
+import com.patika.kredinbizdeservice.mapper.ModelMapper;
+import com.patika.kredinbizdeservice.model.*;
 import com.patika.kredinbizdeservice.repository.LoanRepository;
 import com.patika.kredinbizdeservice.service.ILoanService;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +25,7 @@ import static com.patika.kredinbizdeservice.exceptions.ExceptionMessages.LOAN_TY
 public class LoanService implements ILoanService {
 
     private final LoanRepository loanRepository;
+    private final ModelMapper modelMapper = ModelMapper.INSTANCE;
 
     @Override
     @Cacheable(value = CacheNames.PRODUCTS)
@@ -52,23 +51,26 @@ public class LoanService implements ILoanService {
             ConsumerLoan loan1 = new ConsumerLoan();
             loan1.setAmount(loan.getAmount());
             loan1.setInstallment(loan.getInstallment());
-            loan1.setInterestRate(loan1.getInterestRate());
+            loan1.setInterestRate(loan.getInterestRate());
             loan1.setTitle(loan.getTitle());
+            loan1.setBank(modelMapper.toBank(loan.getBankDto()));
             return loanRepository.save(loan1);
         } else if (loan.getType().equals(LoanType.HOUSE_LOAN)) {
             HouseLoan loan1 = new HouseLoan();
             loan1.setAmount(loan.getAmount());
             loan1.setInstallment(loan.getInstallment());
-            loan1.setInterestRate(loan1.getInterestRate());
+            loan1.setInterestRate(loan.getInterestRate());
             loan1.setTitle(loan.getTitle());
+            loan1.setBank(modelMapper.toBank(loan.getBankDto()));
             return loanRepository.save(loan1);
         } else if (loan.getType().equals(LoanType.VEHICLE_LOAN)) {
             VehicleLoan loan1 = new VehicleLoan();
             loan1.setAmount(loan.getAmount());
             loan1.setInstallment(loan.getInstallment());
-            loan1.setInterestRate(loan1.getInterestRate());
+            loan1.setInterestRate(loan.getInterestRate());
             loan1.setTitle(loan.getTitle());
             loan1.setVehicleStatusType(loan.getVehicleStatusType());
+            loan1.setBank(modelMapper.toBank(loan.getBankDto()));
             return loanRepository.save(loan1);
         } else {
             throw new BusinessException(LOAN_TYPE_NOT_FOUND_EXCEPTION_MESSAGE);

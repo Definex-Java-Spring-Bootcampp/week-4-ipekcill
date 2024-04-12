@@ -17,4 +17,6 @@ public class ProductDto {
     private Integer installment;
     private Double interestRate;
     private VehicleStatusType vehicleStatusType;
+    private BankDto bankDto;
+
 }

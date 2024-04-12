@@ -16,7 +16,7 @@ public abstract class Loan extends Auditable implements Product {
     private BigDecimal amount;
     private Integer installment;
     private Double interestRate;
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "bank_id", referencedColumnName = "id")
     private Bank bank;
 

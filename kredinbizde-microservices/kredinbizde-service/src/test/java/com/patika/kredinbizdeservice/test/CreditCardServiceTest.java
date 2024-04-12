@@ -68,14 +68,6 @@ public class CreditCardServiceTest {
         campaign.setTitle("Test");
         campaign.setSectorType(SectorType.OTHERS);
 
-        campaignDto = CampaignDto.builder()
-                .id(1L)
-                .content("Test content")
-                .startingDate(LocalDate.now())
-                .dueDate(LocalDate.now())
-                .title("Test")
-                .sectorType(SectorType.OTHERS)
-                .build();
 
         creditCard = new CreditCard();
         creditCard.setId(1L);
@@ -90,7 +82,16 @@ public class CreditCardServiceTest {
                 .limit(BigDecimal.valueOf(0))
                 .fee(BigDecimal.valueOf(0))
                 .bank(bankDto)
-                .campaigns(List.of(campaignDto))
+                .build();
+
+        campaignDto = CampaignDto.builder()
+                .id(1L)
+                .content("Test content")
+                .startingDate(LocalDate.now())
+                .dueDate(LocalDate.now())
+                .title("Test")
+                .sectorType(SectorType.OTHERS)
+                .creditCard(creditCardDto)
                 .build();
 
         idRequestDto = IdRequestDto.builder()

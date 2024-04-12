@@ -17,4 +17,5 @@ public class CreditCardDto {
     private BankDto bank;
     private LoanType loanType;
     private List<CampaignDto> campaigns;
+
 }

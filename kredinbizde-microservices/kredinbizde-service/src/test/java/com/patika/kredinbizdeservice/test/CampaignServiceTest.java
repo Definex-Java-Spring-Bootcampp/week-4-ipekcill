@@ -1,6 +1,8 @@
 package com.patika.kredinbizdeservice.test;
 
+import com.patika.kredinbizdeservice.controller.model.BankDto;
 import com.patika.kredinbizdeservice.controller.model.CampaignDto;
+import com.patika.kredinbizdeservice.controller.model.CreditCardDto;
 import com.patika.kredinbizdeservice.enums.SectorType;
 import com.patika.kredinbizdeservice.model.Campaign;
 import com.patika.kredinbizdeservice.repository.CampaignRepository;
@@ -12,6 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,9 +36,24 @@ public class CampaignServiceTest {
     private Campaign campaign1;
     private Campaign campaign2;
     private Campaign campaign3;
+    private CreditCardDto creditCardDto;
+    private BankDto bankDto;
 
     @BeforeEach
     void setUp() {
+        bankDto = BankDto.builder()
+                .id(1L)
+                .name("Test")
+                .build();
+
+        creditCardDto = CreditCardDto.builder()
+                .id(1L)
+                .name("Test")
+                .limit(BigDecimal.valueOf(0))
+                .fee(BigDecimal.valueOf(0))
+                .bank(bankDto)
+                .build();
+
         campaignDto = CampaignDto.builder()
                 .id(1L)
                 .content("Test content")
@@ -43,6 +61,7 @@ public class CampaignServiceTest {
                 .dueDate(LocalDate.now())
                 .title("Test")
                 .sectorType(SectorType.OTHERS)
+                .creditCard(creditCardDto)
                 .build();
 
         campaign1 = new Campaign();

@@ -1,5 +1,6 @@
 package com.patika.kredinbizdeservice.test;
 
+import com.patika.kredinbizdeservice.controller.model.BankDto;
 import com.patika.kredinbizdeservice.controller.model.ProductDto;
 import com.patika.kredinbizdeservice.enums.LoanType;
 import com.patika.kredinbizdeservice.model.*;

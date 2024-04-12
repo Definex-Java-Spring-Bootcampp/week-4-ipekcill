@@ -15,4 +15,5 @@ public class CampaignDto {
     private LocalDate dueDate;
     private LocalDate startingDate;
     private SectorType sectorType;
+    private CreditCardDto creditCard;
 }
