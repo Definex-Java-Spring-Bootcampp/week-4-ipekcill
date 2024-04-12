@@ -28,7 +28,7 @@
 - Swagger
 
 ### Features
-All components have been Dockerized.
+Environment-centric configuration was implemented. Each microservice has both application.yml and application-docker.yml files. All components have been Dockerized. Running it in a Docker environment ensures the application-docker.yml configurations are applied.
 #### Micro Services:
 
 - KredinBizde Service:
