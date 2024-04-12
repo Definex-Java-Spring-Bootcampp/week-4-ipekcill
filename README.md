@@ -2,7 +2,7 @@
 
 ### Table of contents
 
-- [PROJECT STRUCTURE](#Project-architecture)
+- [PROJECT STRUCTURE](#project-architecture)
 - [TECHNOLOGY STACK](#technology-stack)
 - [DOCKER](#docker)
 - [FEATURES](#features)
