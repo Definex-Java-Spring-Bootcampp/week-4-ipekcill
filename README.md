@@ -46,7 +46,6 @@ All components have been Dockerized.
 
 - Garanti Service:
   - KredinBizde Service integrates with the Garanti Service for synchronously communicating  applications from KredinBizde Service to the Garanti Bank. 
-  - RabbitMQ is utilized for communication between services.
   - Implements custom exception classes to handle various error scenarios
   
 - Notification Service:
@@ -65,6 +64,7 @@ All components have been Dockerized.
 All Kredinbizde microservices and related components are collected in docker-compose.yml. Applications were containerized.
 This build can be easily started with the `docker-compose up` command. Once all services start running in Docker, you can access Swagger from [here](http://localhost:8083/swagger-ui/index.html).
 
+Swagger documentation example :
 ![Example end-point](https://raw.githubusercontent.com/ipekcill/image-resources/main/Screenshot_1.png)
 
 ### Contact
