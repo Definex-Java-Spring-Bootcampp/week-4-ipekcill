@@ -5,5 +5,6 @@ import com.patika.kredinbizdeservice.enums.LoanType;
 public interface Product {
     LoanType getLoanType();
     Long getId();
+    Bank getBank();
 
 }

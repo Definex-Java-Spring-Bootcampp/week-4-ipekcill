@@ -64,12 +64,9 @@ public class UserServiceTest {
 
     @Test
     public void should_create_user_successfully() {
-        //hangi durumda hangi mock datasının dönceği bilgisi
         when(userRepository.save(any(User.class))).thenReturn(user);
-        //test edilecek metod çağrımı
         userService.save(userDto);
         assertEquals(user.getId(), 1L);
-        //verify
         verify(userRepository, times(1)).save(any(User.class));
         verify(notificationProducer, times(1)).sendNotification(any(NotificationDTO.class));
     }

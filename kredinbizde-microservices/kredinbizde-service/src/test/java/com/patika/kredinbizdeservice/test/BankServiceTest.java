@@ -53,6 +53,7 @@ public class BankServiceTest {
                 .name("Test bank")
                 .id(1L)
                 .build();
+
         bank = new Bank();
         bank.setId(1L);
         bank.setName("Test Bank");

@@ -3,14 +3,17 @@ package com.patika.kredinbizdeservice.test;
 import com.patika.kredinbizdeservice.controller.model.BankDto;
 import com.patika.kredinbizdeservice.controller.model.ProductDto;
 import com.patika.kredinbizdeservice.enums.LoanType;
+import com.patika.kredinbizdeservice.enums.VehicleStatusType;
 import com.patika.kredinbizdeservice.model.*;
 import com.patika.kredinbizdeservice.repository.LoanRepository;
+import com.patika.kredinbizdeservice.service.impl.BankService;
 import com.patika.kredinbizdeservice.service.impl.LoanService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
@@ -32,12 +35,24 @@ public class LoanServiceTest {
     private ConsumerLoan consumerLoan;
     private HouseLoan houseLoan;
     private VehicleLoan vehicleLoan;
+    private BankDto bankDto;
 
     @BeforeEach
     void setUp() {
+
         Bank bank = new Bank();
         bank.setId(1L);
         bank.setName("Test Bank");
+
+        bankDto = BankDto.builder()
+                .name("Test bank")
+                .id(1L)
+                .build();
+
+        BankService bankService = Mockito.mock(BankService.class);
+        when(bankService.getBankById(anyLong())).thenReturn(bank);
+
+        loanService = new LoanService(loanRepository, bankService);
 
         consumerLoanProduct = ProductDto.builder()
                 .id(1L)
@@ -46,6 +61,7 @@ public class LoanServiceTest {
                 .interestRate(1.2)
                 .title("Test")
                 .type(LoanType.CONSUMER_LOAN)
+                .bank(bankDto)
                 .build();
 
         houseLoanProduct = ProductDto.builder()
@@ -55,6 +71,7 @@ public class LoanServiceTest {
                 .interestRate(1.2)
                 .title("Test")
                 .type(LoanType.HOUSE_LOAN)
+                .bank(bankDto)
                 .build();
 
         vehicleLoanProduct = ProductDto.builder()
@@ -64,6 +81,8 @@ public class LoanServiceTest {
                 .interestRate(1.2)
                 .title("Test")
                 .type(LoanType.VEHICLE_LOAN)
+                .bank(bankDto)
+                .vehicleStatusType(VehicleStatusType.NEW)
                 .build();
 
         consumerLoan = new ConsumerLoan();
@@ -89,6 +108,7 @@ public class LoanServiceTest {
         vehicleLoan.setInstallment(12);
         vehicleLoan.setInterestRate(1.5);
         vehicleLoan.setTitle("test");
+        vehicleLoan.setVehicleStatusType(VehicleStatusType.NEW);
         vehicleLoan.setBank(bank);
     }
 

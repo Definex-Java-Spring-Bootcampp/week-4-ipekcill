@@ -3,6 +3,7 @@ package com.patika.kredinbizdeservice.test;
 import com.patika.kredinbizdeservice.client.dto.request.ApplicationRequest;
 import com.patika.kredinbizdeservice.client.dto.response.ApplicationResponse;
 import com.patika.kredinbizdeservice.controller.model.ApplicationDto;
+import com.patika.kredinbizdeservice.controller.model.BankDto;
 import com.patika.kredinbizdeservice.controller.model.ProductDto;
 import com.patika.kredinbizdeservice.controller.model.UserDto;
 import com.patika.kredinbizdeservice.enums.ApplicationStatus;
@@ -58,7 +59,9 @@ public class ApplicationServiceTest {
     private Application savedApplication;
     private User user;
     private CreditCard creditCard;
+    private CreditCard creditCard2;
     private ConsumerLoan loan;
+    private BankDto bankDto;
     private ApplicationResponse applicationResponse;
 
     @BeforeEach
@@ -82,12 +85,20 @@ public class ApplicationServiceTest {
         user.setEmail("test@gmail.com");
         user.setPassword("password");
 
+        creditCard2 = new CreditCard();
+        creditCard2.setId(1L);
+        creditCard2.setFee(BigDecimal.valueOf(0));
+        creditCard2.setLimit(BigDecimal.valueOf(0));
+        creditCard2.setBank(bank);
+        creditCard2.setCampaigns(null);
+
         Campaign campaign =new Campaign();
         campaign.setId(1L);
         campaign.setContent("Test content");
         campaign.setStartingDate(LocalDate.now());
         campaign.setDueDate(LocalDate.now());
         campaign.setTitle("Test");
+        campaign.setCreditCard(creditCard2);
         campaign.setSectorType(SectorType.OTHERS);
 
         creditCard = new CreditCard();
@@ -97,6 +108,11 @@ public class ApplicationServiceTest {
         creditCard.setBank(bank);
         creditCard.setCampaigns(List.of(campaign));
 
+        bankDto = BankDto.builder()
+                .name("Test bank")
+                .id(1L)
+                .build();
+
 
         ProductDto creditCardProduct = ProductDto.builder()
                 .id(1L)
@@ -105,6 +121,7 @@ public class ApplicationServiceTest {
                 .interestRate(1.2)
                 .title("Test")
                 .type(LoanType.CREDIT_CARD)
+                .bank(bankDto)
                 .build();
 
         ProductDto loanProduct = ProductDto.builder()
@@ -114,6 +131,7 @@ public class ApplicationServiceTest {
                 .interestRate(1.2)
                 .title("Test")
                 .type(LoanType.CONSUMER_LOAN)
+                .bank(bankDto)
                 .build();
 
         creditCardApplication = ApplicationDto.builder()
@@ -161,8 +179,6 @@ public class ApplicationServiceTest {
                 .productId(1L)
                 .userId(1L)
                 .build();
-
-
     }
 
     @Test
