@@ -6,6 +6,7 @@
 - [TECHNOLOGY STACK](#technology-stack)
 - [DOCKER](#docker)
 - [FEATURES](#features)
+- [ENTITY RELATIONSHIP](#entity-relationship)
 - [CONTACT](#contact)
 
 ### Project Architecture
@@ -66,6 +67,12 @@ This build can be easily started with the `docker-compose up` command. Once all 
 
 Swagger documentation example :
 ![Example end-point](https://raw.githubusercontent.com/ipekcill/image-resources/main/Screenshot_1.png)
+
+### Entity Relationship
+#### Entity Relationship and Database Tables
+
+![Diagram](https://raw.githubusercontent.com/ipekcill/image-resources/main/entity.drawio%20(2).png)
+
 
 ### Contact
 [Linkedin](https://www.linkedin.com/in/ipekcil/)
