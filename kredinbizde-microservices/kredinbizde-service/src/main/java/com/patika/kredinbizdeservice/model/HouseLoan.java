@@ -15,4 +15,7 @@ public class HouseLoan extends Loan {
     @Column(name = "loan_type")
     @Enumerated(EnumType.STRING)
     private final LoanType loanType = LoanType.HOUSE_LOAN;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bank_id")
+    private Bank bank;
 }

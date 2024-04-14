@@ -57,18 +57,24 @@ public class ApplicationService implements IApplicationService {
 
             application = applicationRepository.save(savedApplication1);
         } else {
-            Loan loan = loanService.getLoanById(applicationDto.getProduct().getId());
-            productId = loan.getId();
-            bankName = loan.getBank().getName();
             Application savedApplication2 = new Application();
 
             savedApplication2.setUser(user);
             if (applicationDto.getProduct().getType().equals(LoanType.CONSUMER_LOAN)) {
-                savedApplication2.setConsumerLoan((ConsumerLoan) loan);
+                ConsumerLoan consumerLoan = loanService.getConsumerLoanById(applicationDto.getProduct().getId());
+                productId = consumerLoan.getId();
+                bankName = consumerLoan.getBank().getName();
+                savedApplication2.setConsumerLoan(consumerLoan);
             } else if (applicationDto.getProduct().getType().equals(LoanType.HOUSE_LOAN)) {
-                savedApplication2.setHouseLoan((HouseLoan) loan);
+                HouseLoan houseLoan = loanService.getHouseLoanById(applicationDto.getProduct().getId());
+                productId = houseLoan.getId();
+                bankName = houseLoan.getBank().getName();
+                savedApplication2.setHouseLoan(houseLoan);
             } else {
-                savedApplication2.setVehicleLoan((VehicleLoan) loan);
+                VehicleLoan vehicleLoan = loanService.getVehicleLoanById(applicationDto.getProduct().getId());
+                productId = vehicleLoan.getId();
+                bankName = vehicleLoan.getBank().getName();
+                savedApplication2.setVehicleLoan(vehicleLoan);
             }
             savedApplication2.setLocalDateTime(applicationDto.getLocalDateTime());
             savedApplication2.setApplicationStatus(ApplicationStatus.INITIAL);
@@ -81,6 +87,7 @@ public class ApplicationService implements IApplicationService {
         ApplicationResponse response = bankServiceClient.createApplication(ApplicationRequest.builder()
                 .userId(user.getId())
                 .productId(productId)
+                .productType(applicationDto.getProduct().getType())
                 .build());
         log.info("Application sent to bank. Current status is: " + (response != null ? response.getApplicationStatus() : ""));
 

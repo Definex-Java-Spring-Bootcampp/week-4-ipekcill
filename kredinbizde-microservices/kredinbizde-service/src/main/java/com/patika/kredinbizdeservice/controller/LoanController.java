@@ -46,7 +46,7 @@ public class LoanController {
 
     @GetMapping("/loans/{id}")
     public ResponseEntity<ApiResponse<Loan>> getLoanById(@PathVariable Long id) {
-        Loan loan = loanService.getLoanById(id);
+        Loan loan = loanService.searchLoanById(id);
         ApiResponse<Loan> apiResponse = ApiResponse.<Loan>builder()
                 .data(loan)
                 .message("Loan found by given id")

@@ -18,4 +18,7 @@ public class VehicleLoan extends Loan {
     @Column(name = "loan_type")
     @Enumerated(EnumType.STRING)
     private final LoanType loanType = LoanType.VEHICLE_LOAN;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bank_id")
+    private Bank bank;
 }

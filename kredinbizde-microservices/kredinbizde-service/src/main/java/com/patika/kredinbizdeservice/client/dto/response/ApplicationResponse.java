@@ -1,5 +1,6 @@
 package com.patika.kredinbizdeservice.client.dto.response;
 
+import com.patika.kredinbizdeservice.enums.LoanType;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -12,4 +13,5 @@ public class ApplicationResponse {
     private ApplicationStatus applicationStatus;
     private Long productId;
     private Long userId;
+    private LoanType productType;
 }

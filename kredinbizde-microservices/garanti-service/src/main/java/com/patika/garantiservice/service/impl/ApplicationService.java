@@ -27,7 +27,7 @@ public class ApplicationService implements IApplicationService {
         log.info("Başvuru iletilmeye başlıyor.. " + request.getUserId() + " " + request.getProductId());
         Application application = applicationMapper.toApplication(request);
 
-        if (applicationRepository.getApplicationByUserIdAndProductId(application.getUserId(), application.getProductId()).isPresent()) {
+        if (applicationRepository.getApplicationByUserIdAndProductIdProductType(application.getUserId(), application.getProductId(), application.getProductLoanType()).isPresent()) {
             throw new BusinessException(ExceptionMessages.DUPLICATE_APPLICATION);
         }
 

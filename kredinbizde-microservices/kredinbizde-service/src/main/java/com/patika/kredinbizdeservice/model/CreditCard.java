@@ -24,7 +24,7 @@ public class CreditCard extends Auditable implements Product {
     private BigDecimal limit;
     @OneToMany(mappedBy = "creditCard", cascade = CascadeType.DETACH)
     private List<Campaign> campaigns;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "bank_id", referencedColumnName = "id")
     private Bank bank;
     @Column(name = "loan_type")

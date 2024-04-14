@@ -1,6 +1,7 @@
 package com.patika.garantiservice.data.entity;
 
 import com.patika.garantiservice.enums.ApplicationStatus;
+import com.patika.garantiservice.enums.LoanType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,4 +19,5 @@ public class Application {
     private ApplicationStatus applicationStatus;
     private Long productId;
     private Long userId;
+    private LoanType productLoanType;
 }

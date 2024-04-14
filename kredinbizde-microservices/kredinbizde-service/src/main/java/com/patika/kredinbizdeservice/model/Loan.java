@@ -16,16 +16,13 @@ public abstract class Loan extends Auditable implements Product {
     private BigDecimal amount;
     private Integer installment;
     private Double interestRate;
-    @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "bank_id", referencedColumnName = "id")
-    private Bank bank;
+
 
     @Override
     public String toString() {
         return "Loan{" +
                 "amount=" + amount +
                 ", installment=" + installment +
-                ", bank=" + bank +
                 ", interestRate=" + interestRate +
                 '}';
     }

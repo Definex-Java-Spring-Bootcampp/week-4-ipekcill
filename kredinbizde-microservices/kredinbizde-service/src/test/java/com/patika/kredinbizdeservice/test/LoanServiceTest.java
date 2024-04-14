@@ -5,7 +5,9 @@ import com.patika.kredinbizdeservice.controller.model.ProductDto;
 import com.patika.kredinbizdeservice.enums.LoanType;
 import com.patika.kredinbizdeservice.enums.VehicleStatusType;
 import com.patika.kredinbizdeservice.model.*;
-import com.patika.kredinbizdeservice.repository.LoanRepository;
+import com.patika.kredinbizdeservice.repository.ConsumerLoanRepository;
+import com.patika.kredinbizdeservice.repository.HouseLoanRepository;
+import com.patika.kredinbizdeservice.repository.VehicleLoanRepository;
 import com.patika.kredinbizdeservice.service.impl.BankService;
 import com.patika.kredinbizdeservice.service.impl.LoanService;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +30,11 @@ public class LoanServiceTest {
     @InjectMocks
     private LoanService loanService;
     @Mock
-    private LoanRepository loanRepository;
+    private ConsumerLoanRepository consumerLoanRepository;
+    @Mock
+    private HouseLoanRepository houseLoanRepository;
+    @Mock
+    private VehicleLoanRepository vehicleLoanRepository;
     private ProductDto consumerLoanProduct;
     private ProductDto houseLoanProduct;
     private ProductDto vehicleLoanProduct;
@@ -52,7 +58,7 @@ public class LoanServiceTest {
         BankService bankService = Mockito.mock(BankService.class);
         when(bankService.getBankById(anyLong())).thenReturn(bank);
 
-        loanService = new LoanService(loanRepository, bankService);
+        loanService = new LoanService(consumerLoanRepository, vehicleLoanRepository, houseLoanRepository, bankService);
 
         consumerLoanProduct = ProductDto.builder()
                 .id(1L)
@@ -114,31 +120,31 @@ public class LoanServiceTest {
 
     @Test
     public void should_create_consumer_loan_successfully() {
-        when(loanRepository.save(any(Loan.class))).thenReturn(consumerLoan);
+        when(consumerLoanRepository.save(any(ConsumerLoan.class))).thenReturn(consumerLoan);
         Loan result = loanService.saveLoan(consumerLoanProduct);
 
         assertNotNull(result);
         assertEquals(consumerLoan.getLoanType(), result.getLoanType());
-        verify(loanRepository, times(1)).save(any(ConsumerLoan.class));
+        verify(consumerLoanRepository, times(1)).save(any(ConsumerLoan.class));
     }
 
     @Test
     public void should_create_house_loan_successfully() {
-        when(loanRepository.save(any(Loan.class))).thenReturn(houseLoan);
+        when(houseLoanRepository.save(any(HouseLoan.class))).thenReturn(houseLoan);
         Loan result = loanService.saveLoan(houseLoanProduct);
 
         assertNotNull(result);
         assertEquals(houseLoan.getLoanType(), result.getLoanType());
-        verify(loanRepository, times(1)).save(any(HouseLoan.class));
+        verify(houseLoanRepository, times(1)).save(any(HouseLoan.class));
     }
 
     @Test
     public void should_create_vehicle_loan_successfully() {
-        when(loanRepository.save(any(Loan.class))).thenReturn(vehicleLoan);
+        when(vehicleLoanRepository.save(any(VehicleLoan.class))).thenReturn(vehicleLoan);
         Loan result = loanService.saveLoan(vehicleLoanProduct);
 
         assertNotNull(result);
         assertEquals(vehicleLoan.getLoanType(), result.getLoanType());
-        verify(loanRepository, times(1)).save(any(VehicleLoan.class));
+        verify(vehicleLoanRepository, times(1)).save(any(VehicleLoan.class));
     }
 }

@@ -1,6 +1,7 @@
 package com.patika.garantiservice.data.repository;
 
 import com.patika.garantiservice.data.entity.Application;
+import com.patika.garantiservice.enums.LoanType;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class ApplicationRepository {
         return applicationList.stream().filter(f -> f.getUserId().equals(userId)).collect(Collectors.toList());
     }
 
-    public Optional<Application> getApplicationByUserIdAndProductId(Long userId, Long productId) {
-        return applicationList.stream().filter(f -> f.getUserId().equals(userId) && f.getProductId().equals(productId)).findFirst();
+    public Optional<Application> getApplicationByUserIdAndProductIdProductType(Long userId, Long productId, LoanType productLoanType) {
+        return applicationList.stream().filter(f -> f.getUserId().equals(userId) && f.getProductId().equals(productId) && f.getProductLoanType().equals(productLoanType)).findFirst();
     }
 
     public List<Application> getAll() {

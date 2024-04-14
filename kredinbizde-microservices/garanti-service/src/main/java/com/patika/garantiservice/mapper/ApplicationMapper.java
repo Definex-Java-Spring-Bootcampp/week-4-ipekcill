@@ -18,6 +18,7 @@ public class ApplicationMapper {
                 .productId(request.getProductId())
                 .createDate(LocalDateTime.now())
                 .applicationStatus(ApplicationStatus.INITIAL)
+                .productLoanType(request.getProductLoanType())
                 .build();
     }
 

@@ -207,7 +207,7 @@ public class ApplicationServiceTest {
     @Test
     public void should_save_loan_application_successfully() {
         when(userService.getById(anyLong())).thenReturn(user);
-        when(loanService.getLoanById(anyLong())).thenReturn(loan);
+        when(loanService.getConsumerLoanById(anyLong())).thenReturn(loan);
         when(applicationRepository.save(any(Application.class))).thenReturn(savedApplication);
         BankServiceClient bankServiceClient = Mockito.mock(BankServiceClient.class);
         when(bankServiceClientFactory.getBankServiceClient(anyString())).thenReturn(bankServiceClient);
