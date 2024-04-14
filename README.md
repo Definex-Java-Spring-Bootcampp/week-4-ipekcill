@@ -71,7 +71,7 @@ Swagger documentation example :
 ### Entity Relationship
 #### Entity Relationship and Database Tables
 
-![Diagram](https://raw.githubusercontent.com/ipekcill/image-resources/main/entity.drawio%20(2).png)
+![Diagram](https://raw.githubusercontent.com/ipekcill/image-resources/main/entity.drawio.last.png)
 
 
 ### Contact
